@@ -1,0 +1,4 @@
+name: k_univalence_inconsistency
+include: .
+depend: cubical-0.3
+flags: --cubical --no-import-sorts
