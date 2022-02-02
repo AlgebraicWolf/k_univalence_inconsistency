@@ -39,8 +39,8 @@ For types `A` and `B`, there is a canonically defined path from identity type `I
 pathToIso : {A B : Type} → A ≡ B → A ≅ B
 pathToIso {A} {B} p = J (λ y _ → A ≅ y) iso' p where
 
-    iso : {A : Type} → A ≅ A
-    iso = iso (λ x → x) (λ x → x) (λ b → refl) λ a → refl
+    iso' : {A : Type} → A ≅ A
+    iso' = iso (λ x → x) (λ x → x) (λ b → refl) λ a → refl
 ```
 
 Univalence states that there is mapping `isoToPath` of form
