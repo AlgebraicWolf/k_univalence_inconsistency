@@ -13,6 +13,17 @@ AxiomUIP = {u : Level} {A : Type u} {x y : A} → (p q : x ≡ y) → p ≡ q
 K→UIP : AxiomK → AxiomUIP
 K→UIP K {u} {A} {x} = J (λ y₁ p' → ((q' : x ≡ y₁) → p' ≡ q')) (K (λ q → refl ≡ q) refl)
 
+-- And K from UIP:
+UIP→K : AxiomUIP → AxiomK
+UIP→K UIP P onRefl h = subst P (UIP refl h) onRefl
+
+-- Canonical mapping of paths to isomorphisms
+pathToIso' : {A B : Type} → A ≡ B → A ≅ B
+pathToIso' {A} {B} p = J (λ y _ → A ≅ y) iso' p where
+
+    iso' : {A : Type} → A ≅ A
+    iso' = iso (λ x → x) (λ x → x) (λ b → refl) λ a → refl
+
 -- The inconsistency follows from the fact that UIP pronounces any two proofs of equality to be equal.
 -- However, this is not the case in HoTT, and we can show that by constructing two equalities on Bool 
 
